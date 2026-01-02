@@ -1,0 +1,22 @@
+package com.authlibrary.model;
+
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.io.Serializable;
+
+@Getter
+@Setter
+@MappedSuperclass  //annotation in JPA (Java Persistence API) marks a class whose fields should be inherited by JPA entities,but the class itself is not a table in the database.
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class BaseEntity implements Serializable{	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE )
+	@EqualsAndHashCode.Include
+	private Long id;
+}
